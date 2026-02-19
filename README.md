@@ -102,7 +102,7 @@ With 50% noise,
 The underlying Accuracy is around 73-76% from epoch 0 to 900 consistently accross 10 different initialization with 5000 samples and 5000 hidden dim parameters.
    
 
-#Limitations:
+# Limitations:
 
 On Make_circles samples initialization, The underlying consistensy of the model was around 54-63% consistently accross 10 trials from epoch 0 to 900, with 5000 parameters and 1000 samples.
   
