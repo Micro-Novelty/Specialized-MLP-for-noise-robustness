@@ -56,11 +56,11 @@ To use AWE You must download or import Python library such as:
 Note: Supports python 3.14+
 
 ^. Step By Step usage:
-~ download my AWE Encoder, Plug it in python environment along with Any Numpy MLP SetUp
-~ My current MLP Already has the single weight (self.W) plugged with special_weight.weight_encoder(), or you can manually test or add more weights
-~ set to learning rate to 0.1 for good balance of learning or lower or higher depends on your needs.
-~ Create and import make_classfication() to directly test and dont forget to import train_test_split() too.
-~ you're ready to try the weight encoder and see the consistent accuracy. 
+1. ~ download my AWE Encoder, Plug it in python environment along with Any Numpy MLP SetUp
+2. ~ My current MLP Already has the single weight (self.W) plugged with special_weight.weight_encoder(), or you can manually test or add more weights
+3. ~ set to learning rate to 0.1 for good balance of learning or lower or higher depends on your needs.
+4. ~ Create and import make_classfication() to directly test and dont forget to import train_test_split() too.
+5. ~ you're ready to try the weight encoder and see the consistent accuracy. 
 
 
 # Test Results of my Experiement:
