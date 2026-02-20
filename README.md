@@ -81,7 +81,7 @@ Note: Supports python 3.14+
 
 # Test Results of my Experiement:
 for a convincing results, the data for training i used is train_test_split() in which X, and y, which correlates for input and correct training data set, and random_state is 99.
-^. 1. Make_classification:
+^. 1. Make_classification samples:
    Code form:
 ```
 X, y_raw = make_classification(
@@ -110,7 +110,7 @@ train_test_split(X_noisy, y, test_size=0.9, random_state=99)
    2. Std Accuracy Ranging from 8% (0.08) to 14% (0.14) consistently accross 10 trials
    3. Variance Accuracy Ranging from 2% (0.02) to 4% (0.040 consistently accross 10 trials
 
-^. 2. Make_moons:
+^. 2. Make_moons samples:
    code form:
  ```
  X, y_raw = make_moons(
@@ -119,7 +119,10 @@ train_test_split(X_noisy, y, test_size=0.9, random_state=99)
     random_state=99) 
  ```
 With 50% noise,
-The underlying Accuracy is around 73-76% from epoch 0 to 900 consistently accross 10 different initialization with 5000 samples and 5000 hidden dim parameters.
+The underlying Accuracy is around 73-76% from epoch 0 to 900 consistently accross 10 different initialization with 5000 samples and 5000 hidden dim parameters. with Noted results:
+1. Mean accuracy ranging from 75 - 82% consistently accross 10 trials
+2. Std accuracy ranging from 5% (0.05) to 15% consistently accross 10 trials
+3. Var accuracy ranging from 0.2% (0.002) to 2% (0.02) consistently accross 10 trials.
    
 
 # Small Limitations Features:
