@@ -63,10 +63,28 @@ in where K is a product of eigenvalue energy after binary search, in which the n
         AME =  np.log1p(X_mag) * np.log1p(grad_energy) 
         return AME
 ```
-Explanation: the log(x_mag + 1) Provides a log value by a non-polynomial function of X_mag in order to express a finite sum of terms consisting of constants and variables raised to whole Number exponents to help identify the logarithmic scale of X_mag. and multiplcation with log(1 + grad_energy) to normalized the range of AME to 0 -> 1, given the positive value of each variables.
+Explanation: the log(x_mag + 1) Provides a log value by a non-polynomial function of X_mag in order to express a finite sum of terms consisting of constants and variables raised to whole Number exponents to help identify the logarithmic scale of X_mag. and multiplcation with log(1 + grad_energy) to normalize the range of AME to 0 -> 1, given the positive value of each variables.
 
 in Which High AME, AME > 0.75. Correlates towards such High Error indication of Possible Ongoing Abstraction due to the Complexity of The input samples. In Which Low AME Correlates towards More Efficient Abstraction and Low Possible Error can Occur in within further Abstraction given in linear input samples complexity.
 
+3. Curvature Tensor:
+   This Section Describes a derived mathematical equations From differential equations described as "Curvature tensor", that calculates the edge cases of given variables extracted from a matrix, Its Usage is for example:
+   1. Filtering Noise and distingusih complexity of edge case.
+   2. Differential sensitive magnitude given from extracted matrix Components such as magnitude sum of x given each vectors are linear or nonlinear complexity inside a matrix of x.
+   Code form:
+```
+trA = k / (1.0 - anisotropy) + eps  
+trB = (1/2 + mag_G) / (1.0 + trA**2)
+trC = (1/6 + K_G) / (trB**2 - 1.0)
+```
+Explanation:
+1. trA: Given k range is positive and not < 0, the product of trA from division of (1.0 - anisotropy) calculates the complexity of the given k energy with anisotropy of the actual fluctuations of gradient of input x, in which, Anisotropy > 0.75, and k ranging from 2 to 20, or f(k) = 20 < k > 2  indicating a stable moderate complexity of the input and the domain is guaranteed Nonlinear, trA is guaranteed > 0.
+2. trB: given the first order sum of (1/2) with mag_G, this part of block is necessary for Normalization of given magnitude of x initialized as mag_G in which mag_G > 0, division of (1.0 + trA**2), indicates that the value of trA**2 increased via sum of +1.0, that has a growth of Non-polynomial meaning it forms a stable sigmoid curve. allowing for better complexity separation mechanism after noise was Filtered.
+3. trC: given the second derivative order of (1/6) with K_G, meaning K_G is a "sigmoid" increase of (1.0 + k) projected as such as:
+   ```
+   K_G = 1.0 / (1.0 + k)
+   ```
+   allowing for further deriving the sigmoid growth of k given k > 0, division of (1.0 + k) allows for efficient normalization and baseline comparison of how growth of K_G improves over time from a baseline of (1.0 + k).
 
 
 # Instructions:
@@ -83,7 +101,7 @@ Note: Supports python 3.14+
 5. ~ you're ready to try the weight encoder and see the consistent accuracy. 
 
 
-# Test Results of my Experiement:
+# Test Results of my Experiment:
 for a convincing results, the data for training i used is train_test_split() in which X, and y, which correlates for input and correct training data set, and random_state is 99.
 ^. 1. Make_classification samples:
    Code form:
