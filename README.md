@@ -105,8 +105,8 @@ Note: Supports python 3.14+
 4. ~ My current MLP Already has the single weight (self.W) plugged with special_weight.weight_encoder(), or you can manually test and add more weights
    Ex setUp:
 ```
-   self.W = self.special_weight(X).weight_encoder(X)
-   self.W1 = .... #same as self.W
+   self.W = self.special_weight(input_size, output_size).weight_encoder(X) # where X is input.
+   self.W1 = .... # same code as self.W
 ```
  
 6. ~ set to learning rate to 0.1 for good balance of learning or lower or higher depends on your needs.
