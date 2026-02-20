@@ -154,7 +154,18 @@ model.add(Dense(X_train, input_dim, 2000, activation="relu", weight="abs"))
 model.add(Dense(X_train, 2000, output_dim, activation='relu', weight='abs'))  # logits
 
 
-model.train(X_train, y_train, epochs=1000, lr=0.1)
+base_accuracy = model.train(X_train, y_train, epochs=1000, lr=0.1)
+
+mean_accuracy = np.mean(model.acc)
+std_accuracy = np.std(model.acc)
+var_accuracy = np.var(model.acc)
+
+
+print('mean Accuracy', mean_accuracy)
+print('Std accuracy', std_accuracy)
+print('var accuracy', var_accuracy)
+
+
 def add_noise(X, noise_level=0.1):
     noise = np.random.normal(0, noise_level, X.shape)
     return X + noise
