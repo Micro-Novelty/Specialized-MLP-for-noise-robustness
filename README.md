@@ -18,6 +18,7 @@ random_state = 99
 
 
 # Specific Math Used
+
 1. Eigenvalue:
    The eigenvalue equation in machine learning is 
 Av = Bv, where a square matrix A
@@ -62,6 +63,8 @@ in where K is a product of eigenvalue energy after binary search, in which the n
         AME =  np.log1p(X_mag) * np.log1p(grad_energy) 
         return AME
 ```
+
+in Which High AME, AME > 0.75. Correlates towards such High Error indication of Possible Ongoing Abstraction due to the Complexity of The input samples. In Which Low AME Correlates towards More Efficient Abstraction and Low Possible Error can Occur in within further Abstraction given in linear input samples complexity.
 
 
 
