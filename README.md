@@ -63,6 +63,7 @@ in where K is a product of eigenvalue energy after binary search, in which the n
         AME =  np.log1p(X_mag) * np.log1p(grad_energy) 
         return AME
 ```
+Explanation: the log(x_mag + 1) Provides a log value by a non-polynomial function of X_mag in order to express a finite sum of terms consisting of constants and variables raised to whole Number exponents to help identify the logarithmic scale of X_mag. and multiplcation with log(1 + grad_energy) to normalized the range of AME to 0 -> 1, given the positive value of each variables.
 
 in Which High AME, AME > 0.75. Correlates towards such High Error indication of Possible Ongoing Abstraction due to the Complexity of The input samples. In Which Low AME Correlates towards More Efficient Abstraction and Low Possible Error can Occur in within further Abstraction given in linear input samples complexity.
 
