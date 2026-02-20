@@ -102,10 +102,16 @@ Note: Supports python 3.14+
    Dense = Dense((X_train, input_dim, parameters=5000, ....)) or you can replace X_train with the real Input X.
  ```
   
-4. ~ My current MLP Already has the single weight (self.W) plugged with special_weight.weight_encoder(), or you can manually test or add more weights
-5. ~ set to learning rate to 0.1 for good balance of learning or lower or higher depends on your needs.
-6. ~ Create and import make_classfication() to directly test and dont forget to import train_test_split() too.
-7. ~ you're ready to try the weight encoder and see the consistent accuracy. 
+4. ~ My current MLP Already has the single weight (self.W) plugged with special_weight.weight_encoder(), or you can manually test and add more weights
+   Ex setUp:
+```
+   self.W = self.special_weight(X).weight_encoder(X)
+   self.W1 = .... #same as self.W
+```
+ 
+6. ~ set to learning rate to 0.1 for good balance of learning or lower or higher depends on your needs.
+7. ~ Create and import sklearn make_classfication() to directly test and dont forget to import train_test_split() for training too.
+8. ~ you're ready to try the weight encoder and see the consistent accuracy. 
 
 
 # Test Results of my Experiment:
