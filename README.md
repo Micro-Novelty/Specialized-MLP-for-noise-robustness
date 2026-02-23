@@ -81,7 +81,8 @@ Explanation:
 1. trA: Given k range is positive and not < 0, the product of trA from division of (1.0 - anisotropy) calculates the complexity of the given k energy with anisotropy of the actual fluctuations of gradient of input x, in which, Anisotropy > 0.75, and k ranging from 2 to 20, or f(k) = 20 < k > 2  indicating a stable moderate complexity of the input and the domain is guaranteed Nonlinear, trA is guaranteed > 0.
 2. trB: given the first order sum of (1/2) with mag_G,Where mag_G is:
 ```
-mag_G = np.mean(np.linalg.norm(x, axis=-1))
+mag = np.mean(np.linalg.norm(x, axis=-1))
+mag_G = 1.0 / (1.0 + mag)
 ``` 
 this part of block is necessary for Normalization of given magnitude of x initialized as mag_G in which mag_G > 0, division of (1.0 + trA**2), indicates that the value of trA**2 increased via sum of +1.0, that has a growth of Non-polynomial meaning it forms a stable sigmoid curve. allowing for better complexity separation mechanism after noise was Filtered.
 
