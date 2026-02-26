@@ -11,7 +11,7 @@ Multilayer Perceptron (MLP) is a foundational, supervised feed-forward artificia
 ~ Input dim and output dim depends on sklearn samples (Mostly 1000-10000 samples)
 
 ^. Experiment Note:
-The MLP i used is mostly small, To further test the capabilites of the abstract weight encoder in smaller Datasets and fewer Parameters, Parameters can be scaled, and it doesn't cause Accuracy degradation, with a very consistent results, especially On linear Make_classification module with accuracy being as consistent as much as 90-95% Accuracy with:
+The MLP i used is mostly small basic Numpy MLP, and its independent, meaning it doesn't use Dropout or any helper modules from pytorch. To further test the capabilites of the abstract weight encoder (AWE) in smaller Datasets and fewer Parameters, Parameters can be scaled, and it doesn't cause Accuracy degradation, with a very consistent results, especially On linear Make_classification module with accuracy being as consistent as much as 90-95% Accuracy with:
 class separation = 1.5
 random_state = 99
 
@@ -166,19 +166,9 @@ The underlying Accuracy is around 73-76% from epoch 0 to 900 consistently accros
 3. Var accuracy ranging from 0.2% (0.002) to 2% (0.02) consistently accross 10 trials.
    
 
-# Small Limitations Features:
 
-On Make_circles samples initialization, The underlying consistensy of the model was around 54-63% consistently accross 10 trials from epoch 0 to 900, with 5000 parameters and 1000 samples and 50% noise given from this code:
-```
-X, y_raw = make_circles(
-    n_samples = 1000, 
-    noise=0.5,  
-    random_state=99)
-```
-
-with noise 10%, The underlying Accuracy Ranging from 73 - 81% with the same amount of parameters and same 1000 samples
-  
 # Final Conclusive Results
+1. For trainings results:
 
 ^. With 5 different trials, and each Mean accuracy on each trial, given this data:
 ```
@@ -193,5 +183,41 @@ Note: Each vector there represents the actual mean accuracy percentage of Each t
 ^. 2. AWE = Represents the actual mean accuracy on Regular MLP with AWE>
 
 Each MLP Was Given with Make_classification results with 1000 samples, the same as above Make_classification, and 5000 Parameters.
-The Underlying Mean Delta Accuracy is: 21.4%
+The Underlying Mean Delta Accuracy is:
+
+• 21.4%
+
+2. For both trainings and test validations:
+
+The underlying mean Accuracy after Training and tested on synthetic data such as make_classification samples, total 1000 samples with 100 parameters, Is:
+
+• 87-91%. 
+
+Given code form:
+```
+X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.9, random_state=99)
+_, X_test2, _, y_test2 = train_test_split(X, y, test_size=0.9, random_state=123)
+
+test_accuracy = model.predict(X_test, y_test, epochs=1000)
+test_accuracy = model.predict(X_test2, y_test2, epochs=1000)
+
+```
+
+Meaning that both testing after trainings, tested for 2000 epochs, the STD variance is only 0.7% variance of accuracy. meaning the underlying accuracy of each 1000 epochs of testing varies only a slight 0.7 -> 2.1%, because each 1000 epochs was tested on different samples.
+
+
+# Small Limitations Features:
+
+On Make_circles samples initialization, The underlying consistensy of the model was around 54-63% consistently accross 10 trials from epoch 0 to 900, with 5000 parameters and 1000 samples and 50% noise given from this code:
+```
+X, y_raw = make_circles(
+    n_samples = 1000, 
+    noise=0.5,  
+    random_state=99)
+```
+
+with noise 10%, The underlying Accuracy Ranging from 73 - 81% with the same amount of parameters and same 1000 samples
+  
+●. AWE doesn't necessarily prevent Overfitting, it helps to reduce it by making it more stable during training and more consistent learning.
+
 
