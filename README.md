@@ -121,7 +121,9 @@ Note: Supports python 3.14+
 
 
 # Test Results of my Experiment:
-for a convincing results, the data for training i used is train_test_split() in which X, and y, which correlates for input and correct training data set, and random_state is 99.
+for a convincing results, the data for training i used is train_test_split() in which X, and y, which correlates for input and correct training data set, and random_state is 99 and 123 for testing.
+This block only includes Training results.
+
 ^. 1. Make_classification samples:
    Code form:
 ```
@@ -139,14 +141,14 @@ X, y_raw = make_classification(
 ```
 train_test_split(X, y, test_size=0.9, random_state=99)
 ```
-   the underlying accuracy reaches up to 86%-93% on 1000 samples consistent accross  10 trials (10*1000 epochs) with 16 hidden_dim, in which each trial resets the models training to first initialization. and 93-97% accuracy on up to 2000 hidden_dim with 1000 samples consistently accross 10 trials.
+   the underlying Training accuracies reaches up to 86%-93% on 1000 samples consistent accross  10 trials (10*1000 epochs) with 16 hidden_dim, in which each trial resets the models training to first initialization. and 93-97% accuracy on up to 2000 hidden_dim with 1000 samples consistently accross 10 trials.
    
    ~ When The model was trained using X_noisy, in which X_noisy is a distorted input in which X + noise_scale, where noise_scale is 0.9 (90% noise) using np.random.uniform(0, noise_scale, size=x.shape), and it was put inside 
 ```
 train_test_split(X_noisy, y, test_size=0.9, random_state=99)
 ```
 
-   the underlying accuracy consistently ranging from 79% - 82% on 1000 samples with 16 hidden_dim. with Noted Results:
+   the underlying Training accuracies consistently ranging from 79% - 82% on 1000 samples with 16 hidden_dim. with Noted Results:
    1. Mean Accuracy Ranging From 92% to 94% consistently accross 10 trials
    2. Std Accuracy Ranging from 8% (0.08) to 14% (0.14) consistently accross 10 trials
    3. Variance Accuracy Ranging from 2% (0.02) to 4% (0.040 consistently accross 10 trials
@@ -160,7 +162,7 @@ train_test_split(X_noisy, y, test_size=0.9, random_state=99)
     random_state=99) 
  ```
 With 50% noise,
-The underlying Accuracy is around 73-76% from epoch 0 to 900 consistently accross 10 different initialization with 5000 samples and 5000 hidden dim parameters. with Noted results:
+The underlying Training Accuracies is around 73-76% from epoch 0 to 900 consistently accross 10 different initialization with 5000 samples and 5000 hidden dim parameters. with Noted results:
 1. Mean accuracy ranging from 75 - 82% consistently accross 10 trials
 2. Std accuracy ranging from 5% (0.05) to 15% consistently accross 10 trials
 3. Var accuracy ranging from 0.2% (0.002) to 2% (0.02) consistently accross 10 trials.
@@ -216,8 +218,9 @@ X, y_raw = make_circles(
     random_state=99)
 ```
 
-with noise 10%, The underlying Accuracy Ranging from 73 - 81% with the same amount of parameters and same 1000 samples
+with noise 10%, The underlying Training Accuracies Ranging from 73 - 81% with the same amount of parameters and same 1000 samples
   
-●. AWE doesn't necessarily prevent Overfitting, it helps to reduce it by making it more stable during training and more consistent learning.
+●. AWE doesn't necessarily prevent overfitting and underfitting, it helps to reduce it, by making it more stable during training and more consistent at learning during generalization.
+
 
 
