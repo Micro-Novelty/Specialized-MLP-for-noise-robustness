@@ -93,7 +93,7 @@ this part of block is necessary for Normalization of given magnitude of x initia
    allowing for further deriving the sigmoid growth of k given k > 0, division of (1.0 + k) allows for efficient normalization and baseline comparison of how growth of K_G improves over time from a baseline of (1.0 + k).
 
 
-# Instructions:
+# Usage instructions:
 To use AWE You must download or import Python library such as:
 1. Numpy
 2. Sklearn
@@ -117,6 +117,9 @@ Note: Supports python 3.14+
  
 6. ~ set to learning rate to 0.1 for good balance of learning or lower or higher depends on your needs.
 7. ~ Create and import sklearn make_classfication() to directly test and dont forget to import train_test_split() for training too.
+
+9. For further test of generalizations after trainings, you can create a more robust realistic data sets, or you can directly copy my realistic_data_sets() function and add_distribution_shift() functions.
+
 8. ~ you're ready to try the weight encoder and see the consistent accuracy. 
 
 
@@ -189,7 +192,40 @@ The Underlying Mean Delta Accuracy is:
 
 • 21.4%
 
-2. For both trainings and test validations:
+2. For generalization capabilities:
+
+The Underlying test Accuracy (after trainings) of AWE MLP is very consistent given in this average results after 10 trials:
+
+1. Standard split:
+- Mean = 0.916
+- Std = 0.018
+- Min = 0.886
+- Max = 0.943
+
+Note: Standard split is regular Accuracy score given the model predictions based on its capabilities of distinguishing basic noise and real features.
+
+2. Noise injection:
+- Mean = 0.912
+- Std = 0.20
+- Min = 0.878
+- Max = 0.942
+
+Note: Noise injection is a test accuracy in which the X input was corrupted with slightly controlled unncessary noise to see how well the model can predict what's unnecessary noise and whats real features
+
+3. distribution shift:
+- Mean = 0.831
+- Std = 0.022
+- Min = 0.800
+- Max = 0.856
+
+Note: Distribution shift is a neccessary and important test to see How well the model recognize Real world complex noise in which neccessary to see wether a Given model overfits or not.
+
+●. Results Conclusion:
+This Further Proves that AWE MLP, without any helper module like Dropout, etc. Can still perform very Well on noisy, complex environment consistently accross 10 trials.
+
+ 
+
+3. For both trainings and test validations:
 
 The underlying mean Accuracy after Training and tested on synthetic data such as make_classification samples, total 1000 samples with 100 parameters, Is:
 
