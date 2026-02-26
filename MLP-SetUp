@@ -107,6 +107,15 @@ class MLP:
             x = layer.forward(x)
         return self.softmax.forward(x)
 
+    def predict(self, X, y, epochs=1000, verbose=True):
+    	for epoch in range(epochs):
+    		y_pred = self.forward(X)
+    		loss = Loss.categorical_crossentropy(y, y_pred)    		
+    		if verbose and epoch % 100 == 0:
+    		   acc = np.mean(np.argmax(y_pred, axis=1) == np.argmax(y, axis=1))
+    		   self.acc2.append(acc)
+    		   print(f"Epoch {epoch} | loss:{loss:.4f} | Acc: {acc:.2f}")    			  	
+
     def backward(self, grad, lr):
         grad = self.softmax.backward(grad)
         for layer in reversed(self.layers):
@@ -156,6 +165,8 @@ output_dim = y.shape[1]
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.9, random_state=99)
+_, X_test2, _, y_test2 = train_test_split(X, y, test_size=0.9, random_state=123)
+
 
 def add_noise(X, noise_level=0.1):
     noise = np.random.normal(0, noise_level, X.shape)
@@ -172,7 +183,10 @@ model.add(Dense(X_train, 100, output_dim, activation='relu'))
 
 base_trainings_accuracy = model.train(X_noisy, y_train, epochs=1000, lr=0.1) # with corruption of 90% noise of X_train samples. 1000 epochs trainings.
 
-base_tests_accuracy = model.train(X_noise_test, y_test, epochs=1000, lr=0.1) # with corruption of 90% noise of X_test samples. 1000 epochs tests.
+
+# tests accuracies
+test_accuracy = model.predict(X_test, y_test, epochs=1000)
+test_accuracy = model.predict(X_test2, y_test2, epochs=1000)
 
 
 # complementary datas.
