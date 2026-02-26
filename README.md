@@ -194,7 +194,7 @@ The Underlying Mean Delta Accuracy is:
 
 2. For generalization capabilities:
 
-The Underlying test Accuracy (after trainings) of AWE MLP is very consistent given in this average results after 10 trials:
+The underlying test accuracies (after trainings) of AWE MLP using 100 parameters and 1000 make_classifications samples, Are very consistent given in this average results after 10 trials:
 
 1. Standard split:
 - Mean = 0.916
