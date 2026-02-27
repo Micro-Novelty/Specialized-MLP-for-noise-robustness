@@ -12,9 +12,10 @@ Multilayer Perceptron (MLP) is a foundational, supervised feed-forward artificia
 
 ^. Experiment Note:
 The MLP i used is mostly small basic Numpy MLP, and its independent, meaning it doesn't use Dropout or any helper modules from pytorch. To further test the capabilites of the abstract weight encoder (AWE) in smaller Datasets and fewer Parameters, Parameters can be scaled, and it doesn't cause Accuracy or generalization degradation, with a very consistent results accross different generalization samples, especially On linear Make_classification module with accuracy being as consistent as much as 90-95% Accuracy on training with features:
-class separation = 1.5
-random_state = 99
-And around 91-93% generalizatio accuracy on consistently on sklearn make_classification() syntethic datas with minimal neccessary noise to capture average real world noise complexity, using only 100 parameters and 1000 samples.
+1. class separation = 1.5
+2. random_state = 99
+
+And around 91-93% generalization accuracies consistently on sklearn make_classification() syntethic datas with minimal neccessary noise to capture average real world noise complexity consistently, using only 100 parameters and 1000 samples for fair comparisons.
 
 
 
