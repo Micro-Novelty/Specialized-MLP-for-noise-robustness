@@ -6,14 +6,15 @@ A Custom specialized MLP Designed to handle noise with a very consistent Accurac
 Multilayer Perceptron (MLP) is a foundational, supervised feed-forward artificial neural network consisting of at least three layers (input, hidden, output) of fully connected neurons. It uses nonlinear activation functions (like ReLU or sigmoid) and backpropagation to learn complex, non-linearly separable relationships, commonly used for classification and regression tasks. 
 
 ^. MLP and Setup Requirements:
-~ Numpy and sklearn library
-~ 16 hidden dimension
-~ Input dim and output dim depends on sklearn samples (Mostly 1000-10000 samples)
+1. ~ Numpy and sklearn libraries
+2. ~ 16-5000 hidden dimension (parameters)
+3. ~ Input dim and output dim depends on sklearn samples (Mostly 1000-10000 samples)
 
 ^. Experiment Note:
-The MLP i used is mostly small basic Numpy MLP, and its independent, meaning it doesn't use Dropout or any helper modules from pytorch. To further test the capabilites of the abstract weight encoder (AWE) in smaller Datasets and fewer Parameters, Parameters can be scaled, and it doesn't cause Accuracy degradation, with a very consistent results, especially On linear Make_classification module with accuracy being as consistent as much as 90-95% Accuracy with:
+The MLP i used is mostly small basic Numpy MLP, and its independent, meaning it doesn't use Dropout or any helper modules from pytorch. To further test the capabilites of the abstract weight encoder (AWE) in smaller Datasets and fewer Parameters, Parameters can be scaled, and it doesn't cause Accuracy or generalization degradation, with a very consistent results accross different generalization samples, especially On linear Make_classification module with accuracy being as consistent as much as 90-95% Accuracy on training with features:
 class separation = 1.5
 random_state = 99
+And around 91-93% generalizatio accuracy on consistently on sklearn make_classification() syntethic datas with minimal neccessary noise to capture average real world noise complexity, using only 100 parameters and 1000 samples.
 
 
 
