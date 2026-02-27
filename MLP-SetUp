@@ -98,6 +98,7 @@ class MLP:
         self.layers = []
         self.softmax = SoftmaxOutput()
         self.acc = []
+        self.acc2 = []
 
     def add(self, layer):
         self.layers.append(layer)
@@ -244,6 +245,7 @@ def realistic_model_test(model, X, y, n_trials=10):
 
 X, y_raw = test_sets(type="make_class")
 
+# arangement needed for shapes uniformity
 num_classes= len(np.unique(y_raw))
 y = np.zeros((y_raw.size, num_classes))
 y[np.arange(y_raw.size), y_raw] = 1
@@ -265,15 +267,16 @@ def add_noise(X, noise_level=0.1):
 X_noisy = add_noise(X_train, noise_level=0.9)  
 y_noisy = add_noise(y_train, noise_level=0.9)  
 X_noise_tested = add_noise(X_test, noise_level=0.9)
-model = MLP()
 
+# model initialization (X_train is added so that AWE can be initialized using x input for weight encoding inside Dense class, not for additional parameters).
+model = MLP()
 model.add(Dense(X_train, input_dim, 100, activation="relu"))
 model.add(Dense(X_train, 100, output_dim, activation='relu')) 
 
 # realistic test sets.
 results = realistic_model_test(model, X, y, n_trials=10)
 
-
+# optional independent trainings
 base_trainings_accuracy = model.train(X_noisy, y_train, epochs=1000, lr=0.1) # with corruption of 90% noise of X_train samples. 1000 epochs trainings.
 
 
