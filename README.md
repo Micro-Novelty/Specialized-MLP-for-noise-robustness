@@ -3,6 +3,8 @@ A Custom specialized MLP Designed to handle noise with a very consistent Accurac
 
 
 # MLP Introduction
+![Uploading image.png…]()
+
 Multilayer Perceptron (MLP) is a foundational, supervised feed-forward artificial neural network consisting of at least three layers (input, hidden, output) of fully connected neurons. It uses nonlinear activation functions (like ReLU or sigmoid) and backpropagation to learn complex, non-linearly separable relationships, commonly used for classification and regression tasks. 
 
 ^. MLP and Setup Requirements:
