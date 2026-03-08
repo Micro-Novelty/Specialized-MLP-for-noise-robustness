@@ -3,7 +3,6 @@ A Custom specialized MLP Designed to handle noise with a very consistent Accurac
 
 
 # MLP Introduction
-![Uploading image.png…]()
 
 Multilayer Perceptron (MLP) is a foundational, supervised feed-forward artificial neural network consisting of at least three layers (input, hidden, output) of fully connected neurons. It uses nonlinear activation functions (like ReLU or sigmoid) and backpropagation to learn complex, non-linearly separable relationships, commonly used for classification and regression tasks. 
 
@@ -54,7 +53,8 @@ Code form:
 in where K is a product of eigenvalue energy after binary search, in which the necessary for efficient Categorization, and allows for mapping continous eigenvalue outputs to discrete bins, in technical term, necessary for calculating an efficient index in which a necessary eigenvalue maintains a stable energy in which order of covariance, categorized to int scalar to efficiently be used for eigenvalue ratio for later equations.
 
 2. AME Equations (Abstract Modelling Error):
-   AME is a fundamental equations needed for calculating further Abstraction error given the magnitude and the gradient of the input, further modelling a neccessary error given the complexity of input samples. its a necessary component given to calculate a subtract of 1.0 from AME, given AME Range 0 -> 1.0.
+   AME is a fundamental equations needed for calculating further Abstraction error given the magnitude and the gradient of the input, derived and inspired from KL divergence. further modelling a neccessary error given the complexity of input samples. its a necessary component given to calculate efficient distributed complexity.
+
    Code Form:
 ```
     def AME_Encoder(self, x):
@@ -67,12 +67,12 @@ in where K is a product of eigenvalue energy after binary search, in which the n
         AME =  np.log1p(X_mag) * np.log1p(grad_energy) 
         return AME
 ```
-Explanation: the log(x_mag + 1) Provides a log value by a non-polynomial function of X_mag in order to express a finite sum of terms consisting of constants and variables raised to whole Number exponents to help identify the logarithmic scale of X_mag. and multiplcation with log(1 + grad_energy) to normalize the range of AME to 0 -> 1, given the positive value of each variables.
+Explanation: the log(x_mag + 1) Provides a log value by a non-polynomial function of X_mag in order to express a finite sum of terms consisting of constants and variables raised to whole Number exponents to help identify the logarithmic scale of X_mag. and multiplcation with log(1 + grad_energy) to normalize the range of AME to > 0, given the positive value of each variables.
 
 in Which High AME, AME > 0.75. Correlates towards such High Error indication of Possible Ongoing Abstraction due to the Complexity of The input samples. In Which Low AME Correlates towards More Efficient Abstraction and Low Possible Error can Occur in within further Abstraction given in linear input samples complexity.
 
 3. Curvature Tensor:
-   This Section Describes a derived mathematical equations From differential equations described as "Curvature tensor", that calculates the edge cases of given variables extracted from a matrix, Its Usage is for example:
+   This Section Describes a derived and inspired mathematical equations From differential equations and taylor expansion series, described as "Curvature tensor", that calculates the edge cases of given variables extracted from a matrix, Its Usage is for example:
    1. Filtering Noise and distingusih complexity of edge case.
    2. Differential sensitive magnitude given from extracted matrix Components such as magnitude sum of x given each vectors are linear or nonlinear complexity inside a matrix of x.
    Code form:
@@ -96,6 +96,28 @@ this part of block is necessary for Normalization of given magnitude of x initia
    ```
    allowing for further deriving the sigmoid growth of k given k > 0, division of (1.0 + k) allows for efficient normalization and baseline comparison of how growth of K_G improves over time from a baseline of (1.0 + k).
 
+4. AEL (abstraction efficiency limit):
+
+AEL is an equations used to calculate a possible limitation on how the model could do such neccessary abstraction given the input complexity. Derived and inspired from differential geometry, given AEL code form:
+```
+AEL = 0.3 + spectral_similarity * anisotropy
+```
+Note:
+In which anisotropy in data and information refers to the property where data characteristics, spatial dependencies, or physical properties vary depending on the direction or angle of measurement. And spectral similarity is the similarity of which a weight and other possible similar weights that almost has the same spectral complexity, given both range (0 -> 1.0)
+
+The empirical baseline of 0.3 refers to the barrier between non linear anisotropy which range is > 0.3, and linear anisotropy which is < 0.3, used as a neccessary directional anchor neccessary to include possible regime change in anisotropy in directional covariance.
+
+5. EDC (Efficient distributed complexity):
+EDC is another equations derived from differential equations to calculate the final complexity in which a weight will be encoded, given code form:
+```
+EDC = k + AEL * (1.0 - AME)
+```
+
+Note:
+This equations capture the relevant component neccessary for capturing input complexity from 3 angles, its compositional dimensional complexity (k), abstraction limitation (AEL) and decrease of possible AME (1.0 - AME).
+
+K is neccessary to capture relevent information to how an input complexity using binary search that results in int (k) range > 0. And AEL is neccessary to capture the limitation based on its environment of the input itself, and (1.0 - AME) to calculate a decrease of AME given the input complexity in a changing environment. 
+Together they act as a neccessary encoder in which the range of EDC is > 0, given both variables are positive, and also provided a log2 value of the directional covariance of the input (log²(DirCov)) in which neccessary to break the symmetric relationships between the weights and input for neccessary abstraction. 
 
 # Usage instructions:
 To use AWE You must download or import Python library such as:
