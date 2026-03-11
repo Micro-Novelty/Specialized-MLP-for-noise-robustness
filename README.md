@@ -110,7 +110,7 @@ The empirical baseline of 0.3 refers to the barrier between non linear anisotrop
 5. EDC (Efficient distributed complexity):
 EDC is another equations derived from differential equations to calculate the final complexity in which a weight will be encoded, given code form:
 ```
-EDC = k + AEL * (1.0 - AME)
+EDC = k + AEL * (1.0 - AME_sigmoid_growth)
 ```
 
 Note:
