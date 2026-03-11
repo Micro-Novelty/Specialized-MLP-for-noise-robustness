@@ -58,35 +58,37 @@ class SpecialWeight:
 
         AME =  np.log1p(X_mag) * np.log1p(grad_energy) 
         return AME
+   
 
-    
-
+    def abstract_variables(self, x, trC, AME, anisotropy):
+        floating_point = np.random.uniform(0, trC, size=x.shape)
+        spectral_similarity = self.spectral_similarity(x, floating_point)
+        AEL = 0.3 + spectral_similarity * anisotropy       
+        scaled_anisotropy = anisotropy / (anisotropy + 1.0)
+        AME_sg = 1.0 / (1.0 + np.exp(-AME))
+        return  AEL, AME_sg   
+      	
+    	
     def abstract_weight_encoder(self, x):
         eps = 1e-5
         input_size = self.input_size
         output_size = self.output_size
 
         rng = np.random.default_rng()
-   
+
         gradient = np.gradient(x)
         val = [np.linalg.norm(v) for v in gradient]
         anisotropy = np.std(val) / np.mean(val) + eps
-
-        mag = np.mean(np.linalg.norm(x, axis=1))
-
+        
         trC, k = self.eigenvalue_encoder(x)
-        AME = self.AME_Encoder(x)
-
-        floating_point = np.random.uniform(0, trC, size=x.shape)
-        spectral_similarity = self.spectral_similarity(x, floating_point)
-
-        AEL = 0.3 + spectral_similarity * anisotropy       
-        scaled_anisotropy = anisotropy / (anisotropy + 1.0)
-
-        efficient_distributed_energy = k + AEL * (1.0 - AME)
+        AME = self.AME_Encoder(x)        
+        AEL, AME_sigmoid_growth = self.abstract_variables(x, trC, AME, anisotropy)
+        
+        efficient_distributed_energy = k + AEL * (1.0 - AME_sigmoid_growth)
         floating_context = rng.uniform(low=0, high=efficient_distributed_energy, size=(input_size, output_size)) 
 
         return floating_context
+
     
     def weight_encoder(self, x, type=None):
         floating_context = self.abstract_weight_encoder(x)
