@@ -282,8 +282,10 @@ X, y_raw = make_circles(
 ```
 
 with noise 10%, The underlying Training Accuracies Ranging from 73 - 81% with the same amount of parameters and same 1000 samples
-  
-●. AWE doesn't necessarily prevent overfitting and underfitting, it helps to reduce it, by making it more stable during training and more consistent at learning during generalization.
+ 
+●. From all of this results, the main conclusion resides in how AWE MLP is used and behave in noise complex environment, making it able to distinguish features from noise a lot better than baseline MLP with higher consistency results.
+
+●. AWE also doesn't necessarily prevent overfitting and underfitting, it helps to reduce it, by making it more stable during training and more consistent at learning during generalization.
 
 
 
