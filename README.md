@@ -11,6 +11,19 @@ Multilayer Perceptron (MLP) is a foundational, supervised feed-forward artificia
 2. ~ 16-5000 hidden dimension (parameters)
 3. ~ Input dim and output dim depends on sklearn samples (Mostly 1000-10000 samples)
 
+# How AWE Works:
+AWE is a specialized custom weight shaping method that used eigenvalue and spectral methods to calculate covariance inside a given input data, and shape the correct Weight from the given eigenvalue, AWE Works by processing input and then captures the necessary eigenvalue to shape a properly initialized Weight that aligns with input data complexity, So, MLP training will be much more consistent and robust against noise. The reason why eigenvalue works robustly against noise and causes great consistency, Happens for a few Reasons:
+
+● 1. Eigenvalue captures the necessary continual pattern inside a given input data:
+   • By using Eigenvalue, the necessary pattern inside a given input data could be captured by using Eigenvalue equations .
+
+2. Eigenvalue captures the necessary standard Complexity of the input variance:
+   • Eigenvalue also captures the input complexity inside a given matrix, allowing it to properly captures the standard variance necessary to be used for properly initialized weight.
+
+3. Eigenvalue provides discrete covariance of a given input data, allowing it to shapes weight:
+  • Eigenvalue also provides deeper discrete covariance results that can determine when an input has strong geometric complexity enough that the covariance is properly consistent necessary for weight shaping, this allows the model to be much more flexible, and does'nt get constrained by 10x more samples than parameters rules.
+
+
 ^. Experiment Note:
 The MLP i used is mostly small basic Numpy MLP, and its independent, meaning it doesn't use Dropout or any helper modules from pytorch. To further test the capabilites of the abstract weight encoder (AWE) in smaller Datasets and fewer Parameters, Parameters can be scaled, and it doesn't cause Accuracy or generalization degradation, with a very consistent results accross different generalization samples, especially On linear Make_classification module with accuracy being as consistent as much as 90-95% Accuracy on training with features:
 1. class separation = 1.5
